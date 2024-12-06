@@ -1,5 +1,4 @@
 # Author: Shree Niraula
-# Script Creation Date: 2024-12-06
 # Purpose: Move files and folders older than 3 months (based on creation or modified date) to the Recycle Bin silently.
 
 # Define the target directory
