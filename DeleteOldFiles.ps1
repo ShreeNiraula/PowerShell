@@ -8,6 +8,10 @@ $directory = "E:\FARRMS_Application\TRMTracker\FARRMS\trm\adiha.php.scripts\dev\
 # Get the current date and calculate the cutoff date (3 months ago)
 $cutoffDate = (Get-Date).AddMonths(-3)
 
+# Initialize counters for deleted files and folders
+$deletedFilesCount = 0
+$deletedFoldersCount = 0
+
 # Function to send files/folders to the Recycle Bin without confirmation
 function Send-ToRecycleBin {
     param(
@@ -65,6 +69,8 @@ Get-ChildItem -Path $directory -Recurse | ForEach-Object {
             # Send folder to Recycle Bin
             Write-Host "Sending folder to Recycle Bin: $($_.FullName)"
             Send-ToRecycleBin -Path $_.FullName
+            # Increment the deleted folder count
+            $deletedFoldersCount++
         }
     }
     # If it's a file
@@ -74,6 +80,12 @@ Get-ChildItem -Path $directory -Recurse | ForEach-Object {
             # Send file to Recycle Bin
             Write-Host "Sending file to Recycle Bin: $($_.FullName)"
             Send-ToRecycleBin -Path $_.FullName
+            # Increment the deleted file count
+            $deletedFilesCount++
         }
     }
 }
+
+# Output the number of deleted files and folders
+Write-Host "`nTotal files deleted: $deletedFilesCount"
+Write-Host "Total folders deleted: $deletedFoldersCount"
