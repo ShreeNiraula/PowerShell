@@ -3,7 +3,7 @@
 # Purpose: Move files and folders older than 3 months (based on creation or modified date) to the Recycle Bin silently.
 
 # Define the target directory
-$directory = "E:\FARRMS_Application\TRMTracker\FARRMS\trm\adiha.php.scripts\dev\shared_docs\temp_Note"
+$directory = "x:\temp_Note"
 
 # Get the current date and calculate the cutoff date (3 months ago)
 $cutoffDate = (Get-Date).AddMonths(-3)
